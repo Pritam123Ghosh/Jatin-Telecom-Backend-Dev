@@ -25,12 +25,12 @@ const categorySchema = new mongoose.Schema({
         default: 0,
     },
     createdBy: {
-        type: Number,
-        default: 1,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     },
     modifiedBy: {
-        type: Number,
-        default: 1,
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User",
     }
 }, {
     timestamps: true

@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
 
-const postSchema = new mongoose.Schema(
+const productSchema = new mongoose.Schema(
     {
         name: {
             type: String,
@@ -10,7 +10,8 @@ const postSchema = new mongoose.Schema(
             type: String,
         },
         category: {
-            type: Number,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Category",
         },
         userId: {
             type: String,
@@ -34,17 +35,17 @@ const postSchema = new mongoose.Schema(
             default: 0,
         },
         createdBy: {
-            type: Number,
-            default: 1,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
         },
         modifiedBy: {
-            type: Number,
-            default: 1,
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "User",
         }
     },
     { timestamps: true }
 );
 
-const Post = mongoose.model('Post', postSchema);
+const Product = mongoose.model('Product', productSchema);
 
-export default Post;
+export default Product;
